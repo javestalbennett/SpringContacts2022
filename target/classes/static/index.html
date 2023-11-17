@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New List Item</title>
+</head>
+<body>
+	<form th:object="${newListItem}" th:action="@{/update/{id}(id=${newListItem.id})}" method=POST>
+		Item Name: <input name="itemName" size="20" th:field="itemName"><br />
+		Store Name: <input name="storeName" size="20" th:field="storeName"><br /> 
+		th:field="*{address.state}"><br /> <input name="submit"
+		type="submit" value="submit" />
+	</form>
+	<a href="viewAll">View all List Items</a>
+</body>
+</html>

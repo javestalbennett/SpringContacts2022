@@ -1,0 +1,56 @@
+<script type = "text/javascript">
+      function validate() {
+      
+         if( document.myForm.name.value == "" ) {
+            alert( "Please provide your name!" );
+            document.myForm.name.focus() ;
+            return false;
+         }
+         if( document.myForm.relationship.value == "" ) {
+            alert( "Please provide your relationship!" );
+            document.myForm.relationship.focus() ;
+            return false;
+         }
+         if( document.myForm.phone.value == ""{
+        	alert( "Please provide your phone number!" );
+            document.myForm.phone.focus() ;
+            return false;
+         }
+         if( document.myForm.address.street.value == "" ) {
+        	alert( "Please provide your street!" );
+        	document.myForm.address.street.focus() ;
+            return false;
+         }
+         if( document.myForm.address.city.value == "" ) {
+        	 alert( "Please provide your city!" );
+        	 document.myForm.address.city.focus() ;
+             return false;
+          }
+         if( document.myForm.address.state.value == "" ) {
+        	 alert( "Please provide your state!" );
+        	 document.myForm.address.state.focus() ;
+             return false;
+          }
+         return( true );
+      }
+</script>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Contact</title>
+</head>
+<body>
+	<form th:object="${newContact}" th:action="@{/update/{id}(id=${newContact.id})}" method=POST onsubmit = "return(validate());>
+		Name: <input name="name" size="20" th:field="*{name}"><br />
+		Relationship: <input name="relationship" size="20" th:field="*{relationship}"><br /> 
+		Phone Number: <input name="phone" size="20" th:field="*{phone}"><br /> 
+		Street: <input name="address.street" size="20" th:field="*{address.street}"><br />
+		City: <input name="address.city" size="20" th:field="*{address.city}"><br />
+		State: <input name="address.state" size="20"
+		th:field="*{address.state}"><br /> <input name="submit"
+		type="submit" value="submit" />
+	</form>
+	<a href="viewAll">View all Contacts</a>
+</body>
+</html>
